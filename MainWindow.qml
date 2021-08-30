@@ -1,16 +1,76 @@
-import QtQuick 2.0
-import QtQuick.Controls 2.2
-import QtQuick.Layouts 1.3
-import Custom.KeyboardController 1.0
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 
-ApplicationWindow {
-    id: applicationWindow
-    visible: true
-    width: 300
+Window {
+    id: root
+
+    width: 320
     height: 240
+    visible: true
+
+    title: qsTr("QML Raspberry Pi Keyboard")
+
+    property Component childButtonGroup: ButtonLayout {
+        id: symbolChooseLayout
+
+        Repeater {
+            model: parent.rows * parent.columns
+
+            delegate: CustomButton {
+                text: dataList[modelData]
+
+                enabled: text.length !== 0
+
+                onClicked: {
+                    if (text === "Пробел") {
+                        label.text += " "
+                    } else {
+                        label.text += text
+                    }
+                    stackView.pop()
+                }
+            }
+        }
+    }
+
+    property Component mainButtonGroup : ButtonLayout {
+        id: symbolGroupChooseLayout
+
+        Repeater {
+            model: ["1\n-.",   "2\nABC",  "3\nDEF",
+                    "4\nGHI",  "5\nJKL",  "6\nMNO",
+                    "7\nPQRS", "8\nTUV",  "9\nWXYZ"]
+
+            delegate: CustomButton {
+                text: modelData
+
+                onClicked: {
+                    var symbolsList = text.split('').filter(el => el !== '\n')
+                    stackView.push(childButtonGroup, {dataList: symbolsList})
+                }
+            }
+        }
+
+        CustomButton {
+            text: "Применить"
+            onClicked: close()
+        }
+
+        CustomButton {
+            text: "0\nПробел"
+            onClicked: stackView.push(childButtonGroup, {dataList: ["0", "Пробел"]})
+        }
+
+        CustomButton {
+            text: "Отмена"
+            onClicked: close()
+        }
+    }
 
     ColumnLayout {
-        id: mainLayout
+        id: mainColumn
 
         anchors.fill: parent
 
@@ -19,7 +79,6 @@ ApplicationWindow {
         anchors.topMargin: 5
         anchors.bottomMargin: 5
 
-        // Label with model name
         Label {
             text: "Модель АКБ"
             font.pixelSize: 15
@@ -30,111 +89,56 @@ ApplicationWindow {
         RowLayout {
             id: textData
 
-            // Label with user input
             Label {
                 id: label
 
                 text: ""
                 Layout.fillWidth: true
+                rightPadding: 5
                 horizontalAlignment: Text.AlignRight
 
                 font.pixelSize: 25
 
                 background: Rectangle {
                     color: "lightgrey"
+                    border.color: "black"
                 }
             }
 
-            // Symbol delete button
             Button {
+                id: deleteButton
+
                 text: "<---"
-                highlighted: true
+                font.pixelSize: 15
                 implicitWidth: 50
+
+                background: Rectangle {
+                    color: "lightgray"
+                    border.width: 2
+                    border.color: "black"
+                    radius: parent.height / 3
+                }
 
                 onClicked: {
                     label.text = label.text.slice(0, label.text.length - 1)
                 }
+
+                onDoubleClicked: clicked()
             }
         }
 
         StackView {
             id: stackView
-            Layout.fillWidth: true
-            Layout.fillHeight: true
 
-            pushEnter: Transition {
+            Layout.fillHeight: parent
+            Layout.fillWidth: parent
 
-            }
+            pushEnter: Transition { }
+            pushExit: Transition { }
+            popEnter: Transition { }
+            popExit: Transition { }
 
-            pushExit: Transition {
-
-            }
-
-            popEnter: Transition {
-
-            }
-
-            popExit: Transition {
-
-            }
-        }
-
-        KeyboardController {
-            id: controller
-
-            onLayoutChangeRequested: {
-                // Change layout to symbol choose layout
-                var symbolChooseLayout = createLayout("SymbolChooseLayout.qml", mainLayout, buttonText);
-                dropLastLayoutFromStack();
-                stackView.push(symbolChooseLayout);
-            }
-
-            onNewSymbolReceived: {
-                // User clicked on symbol, return to previous layout
-                var symbolGroupChooseLayout = createLayout("SymbolGroupChooseLayout.qml", mainLayout, controller.mainLayoutData);
-                dropLastLayoutFromStack();
-                stackView.push(symbolGroupChooseLayout);
-
-                // Add received symbol
-                appendSymbol(symbol);
-            }
-
-            onSpaceButtonPressed: appendSymbol(' ')
-
-            onAccepted: Qt.quit()
-            onRejected: Qt.quit()
+            initialItem: mainButtonGroup
         }
     }
-
-    function appendSymbol(symbol) {
-        // Just add a symbol
-        label.text += symbol;
-    }
-
-    function dropLastLayoutFromStack() {
-        // Pop layout (if there is only 1 layout, do nothing)
-        var object = stackView.pop();
-
-        // Delete layout if it has been popped
-        if (object !== null) {
-            object.destroy();
-        }
-    }
-
-    function createLayout(filename, parent, data) {
-        // Create component
-        var component = Qt.createComponent(filename);
-        var object = component.createObject(mainLayout, {dataList: data})
-
-        // Connect it with parsing function (implemented in KeyboardController.cpp)
-        object.buttonClicked.connect(controller.parseButtonText)
-        return object
-    }
-
-    Component.onCompleted: {
-        // Create initial layout
-        var symbolGroupChooseLayout = createLayout("SymbolGroupChooseLayout.qml", mainLayout, controller.mainLayoutData)
-        stackView.push(symbolGroupChooseLayout)
-    }
-
 }

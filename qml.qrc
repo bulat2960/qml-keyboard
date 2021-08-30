@@ -3,7 +3,5 @@
         <file>ButtonLayout.qml</file>
         <file>CustomButton.qml</file>
         <file>MainWindow.qml</file>
-        <file>SymbolChooseLayout.qml</file>
-        <file>SymbolGroupChooseLayout.qml</file>
     </qresource>
 </RCC>

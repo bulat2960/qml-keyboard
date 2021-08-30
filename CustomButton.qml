@@ -1,20 +1,23 @@
-import QtQuick 2.9
-import QtQuick.Controls 2.2
+import QtQuick 2.12
+import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.3
 
 Button {
-    id: button
-
     Layout.fillHeight: true
     Layout.fillWidth: true
+
+    Layout.preferredHeight: parent.height / 4
+    Layout.preferredWidth: parent.width / 4
 
     font.pixelSize: 10
     font.bold: true
 
     background: Rectangle {
-        color: "lightgray"
-        border.width: 2
+        color: enabled ? "lightgray" : "transparent"
+        border.width: text.length !== 0 ? 2 : 0
         border.color: "black"
-        radius: button.height / 5
+        radius: parent.height / 5
     }
+
+    onDoubleClicked: clicked()
 }

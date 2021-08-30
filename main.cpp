@@ -1,8 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-#include "keyboardcontroller.h"
-
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -10,8 +8,6 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
-
-    qmlRegisterType<KeyboardController>("Custom.KeyboardController", 1, 0, "KeyboardController");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/MainWindow.qml"));
