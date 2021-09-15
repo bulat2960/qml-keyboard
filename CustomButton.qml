@@ -6,18 +6,16 @@ Button {
     Layout.fillHeight: true
     Layout.fillWidth: true
 
-    Layout.preferredHeight: parent.height / 4
-    Layout.preferredWidth: parent.width / 4
+    Layout.preferredHeight: parent.itemPreferredHeight
+    Layout.preferredWidth: parent.itemPreferredWidth
 
     font.pixelSize: 10
     font.bold: true
 
     background: Rectangle {
-        color: enabled ? "lightgray" : "transparent"
+        color: text.length !== 0 ? "lightgray" : "transparent"
         border.width: text.length !== 0 ? 2 : 0
         border.color: "black"
         radius: parent.height / 5
     }
-
-    onDoubleClicked: clicked()
 }
