@@ -6,8 +6,8 @@ Button {
     Layout.fillHeight: true
     Layout.fillWidth: true
 
-    Layout.preferredHeight: parent.itemPreferredHeight
-    Layout.preferredWidth: parent.itemPreferredWidth
+    Layout.preferredHeight: 100
+    Layout.preferredWidth: 100
 
     font.pixelSize: 10
     font.bold: true
@@ -18,4 +18,6 @@ Button {
         border.color: "black"
         radius: parent.height / 5
     }
+
+    onDoubleClicked: clicked()
 }

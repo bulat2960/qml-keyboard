@@ -15,7 +15,7 @@ RowLayout {
         Layout.fillHeight: true
         Layout.fillWidth: true
 
-        Layout.preferredWidth: 40
+        Layout.preferredWidth: 25
         Layout.preferredHeight: labelPreferredHeight
 
         horizontalAlignment: Qt.AlignLeft
@@ -26,7 +26,7 @@ RowLayout {
         Layout.fillHeight: true
         Layout.fillWidth: true
 
-        Layout.preferredWidth: 100
+        Layout.preferredWidth: 50
         Layout.preferredHeight: labelPreferredHeight
 
         Rectangle {
@@ -41,7 +41,7 @@ RowLayout {
         Layout.fillHeight: true
         Layout.fillWidth: true
 
-        Layout.preferredWidth: 40
+        Layout.preferredWidth: 25
         Layout.preferredHeight: labelPreferredHeight
 
         horizontalAlignment: Qt.AlignRight

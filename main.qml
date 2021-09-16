@@ -12,7 +12,17 @@ Window {
 
     title: qsTr("QML Raspberry Pi Keyboard")
 
-    property Component keyboard: Keyboard {
+    property Component symbolsKeyboard: SymbolsKeyboard {
+        headerLabelText: "Модель АКБ"
+
+        onCancelled: {
+            stackView.pop()
+        }
+    }
+
+    property Component numericKeyboard: NumericKeyboard {
+        headerLabelText: "Идент. Номер батареи"
+
         onCancelled: {
             stackView.pop()
         }
@@ -95,26 +105,30 @@ Window {
             labelPreferredHeight: parent.height / 11
         }
 
-        ButtonLayout {
-            rows: 1
-            columns: 3
+        RowLayout {
+            CustomLayoutButton {
+                Layout.preferredHeight: mainWindowLayout.height * 3 / 11
 
-            itemPreferredWidth: parent.width / 3
-            itemPreferredHeight: parent.height * 3 / 11
-
-            CustomButton {
                 text: "Тест\nАКБ"
+
+                onClicked: {
+                    stackView.push(numericKeyboard) // TODO: remove this connection
+                }
             }
 
-            CustomButton {
+            CustomLayoutButton {
+                Layout.preferredHeight: mainWindowLayout.height * 3 / 11
+
                 text: "Тест\nавтогенератора"
             }
 
-            CustomButton {
+            CustomLayoutButton {
+                Layout.preferredHeight: mainWindowLayout.height * 3 / 11
+
                 text: "Настройки"
 
                 onClicked: {
-                    stackView.push(keyboard)
+                    stackView.push(symbolsKeyboard) // TODO: remove this connection
                 }
             }
         }
@@ -125,10 +139,10 @@ Window {
 
         anchors.fill: parent
 
-        anchors.leftMargin: 8
-        anchors.rightMargin: 8
-        anchors.topMargin: 8
-        anchors.bottomMargin: 8
+        anchors.leftMargin: 5
+        anchors.rightMargin: 5
+        anchors.topMargin: 5
+        anchors.bottomMargin: 5
 
         // Disable animation
         pushEnter: Transition { }
