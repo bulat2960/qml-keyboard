@@ -5,6 +5,9 @@
         <file>SymbolsKeyboard.qml</file>
         <file>LabelsRowLayout.qml</file>
         <file>NumericKeyboard.qml</file>
-        <file>Keyboard.qml</file>
+        <file>KeyboardHeader.qml</file>
+        <file>CustomLabeledLayoutButton.qml</file>
+        <file>Settings.qml</file>
+        <file>CustomLayoutLabel.qml</file>
     </qresource>
 </RCC>

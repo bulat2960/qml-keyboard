@@ -10,7 +10,7 @@ Window {
     height: 240
     visible: true
 
-    title: qsTr("QML Raspberry Pi Keyboard")
+    title: qsTr("QML Raspberry Pi EDA Analyzer")
 
     property Component symbolsKeyboard: SymbolsKeyboard {
         headerLabelText: "Модель АКБ"
@@ -21,114 +21,121 @@ Window {
     }
 
     property Component numericKeyboard: NumericKeyboard {
-        headerLabelText: "Идент. Номер батареи"
+        headerLabelText: "Идент. номер батареи"
 
         onCancelled: {
             stackView.pop()
         }
     }
 
+    property Component settings: Settings {
+        headerLabelText: "Настройки"
+
+        onCancelled: {
+            stackView.pop()
+        }
+
+        onAccepted: {
+            stackView.pop()
+        }
+    }
+
 
     property Component mainWindow: ColumnLayout {
-        id: mainWindowLayout
+        CustomLayoutLabel {
+            text: "Анализатор \"ЭДА\""
+            font.italic: true
+            font.bold: true
 
-        RowLayout {
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-
-                color: "transparent"
-            }
-
-            Label {
-                text: "Анализатор \"ЭДА\""
-                font.bold: true
-                font.italic: true
-                font.pixelSize: 20
-
-                horizontalAlignment: Qt.AlignHCenter
-                verticalAlignment: Qt.AlignVCenter
-
-                Layout.fillHeight: true
-                Layout.fillWidth: false
-
-                Layout.preferredHeight: mainWindowLayout.height * 2 / 11
-            }
-
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-
-                color: "transparent"
-            }
+            Layout.preferredHeight: parent.height / 10
         }
 
         LabelsRowLayout {
-            firstLabelText: "Бустер"
-            secondLabelText: "Factory"
-            labelPreferredHeight: parent.height / 11
+            Layout.preferredHeight: parent.height / 10
+
+            leftLabelText: "Бустер"
+
+            rightLabelText: "Factory"
         }
 
         LabelsRowLayout {
-            firstLabelText: "13.09.2021"
-            secondLabelText: "19:23"
-            labelPreferredHeight: parent.height / 11
+            Layout.preferredHeight: parent.height / 10
+
+            leftLabelText: "13.09.2021"
+
+            rightLabelText: "19:23"
         }
 
         LabelsRowLayout {
-            firstLabelText: "Состояние:"
-            secondLabelText: "Подготовка"
-            labelPreferredHeight: parent.height / 11
+            Layout.preferredHeight: parent.height / 10
+
+            leftLabelText: "Состояние:"
+
+            rightLabelText: "Подготовка"
+            rightLabelTextBold: true
+
         }
 
         LabelsRowLayout {
-            firstLabelText: "Напряжение:"
-            secondLabelText: "12.24"
-            labelPreferredHeight: parent.height / 11
+            Layout.preferredHeight: parent.height / 10
+
+            leftLabelText: "Напряжение:"
+
+            rightLabelText: "12.24"
+            rightLabelTextBold: true
         }
 
         LabelsRowLayout {
-            firstLabelText: "Температура:"
-            secondLabelText: "24.3"
-            labelPreferredHeight: parent.height / 11
+            Layout.preferredHeight: parent.height / 10
+
+            leftLabelText: "Температура:"
+
+            rightLabelText: "24.3"
+            rightLabelTextBold: true
         }
 
         LabelsRowLayout {
-            firstLabelText: "Тип АКБ:"
-            secondLabelText: "6CT190"
-            labelPreferredHeight: parent.height / 11
+            Layout.preferredHeight: parent.height / 10
+
+            leftLabelText: "Тип АКБ:"
+
+            rightLabelText: "6CT190"
+            rightLabelTextBold: true
         }
 
         LabelsRowLayout {
-            firstLabelText: "Номер батареи:"
-            secondLabelText: "114232"
-            labelPreferredHeight: parent.height / 11
+            Layout.preferredHeight: parent.height / 10
+
+            leftLabelText: "Номер батареи:"
+
+            rightLabelText: "114232"
+            rightLabelTextBold: true
         }
 
         RowLayout {
+            Layout.preferredHeight: parent.height * 2 / 10
+
             CustomLayoutButton {
-                Layout.preferredHeight: mainWindowLayout.height * 3 / 11
-
                 text: "Тест\nАКБ"
 
                 onClicked: {
-                    stackView.push(numericKeyboard) // TODO: remove this connection
+                    stackView.push(numericKeyboard)
                 }
             }
 
             CustomLayoutButton {
-                Layout.preferredHeight: mainWindowLayout.height * 3 / 11
-
                 text: "Тест\nавтогенератора"
+
+                onClicked: {
+                    stackView.push(symbolsKeyboard)
+                }
             }
 
             CustomLayoutButton {
-                Layout.preferredHeight: mainWindowLayout.height * 3 / 11
-
                 text: "Настройки"
 
                 onClicked: {
-                    stackView.push(symbolsKeyboard) // TODO: remove this connection
+                    stackView.push(settings)
                 }
             }
         }

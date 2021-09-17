@@ -3,7 +3,7 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-Keyboard {
+KeyboardHeader {
     property Component childButtonGroup: GridLayout {
         id: symbolChooseLayout
 
@@ -78,7 +78,7 @@ Keyboard {
         Layout.fillHeight: true
         Layout.fillWidth: true
 
-        Layout.preferredHeight: 500
+        Layout.preferredHeight: 80
 
         // Disable animation
         pushEnter: Transition { }
