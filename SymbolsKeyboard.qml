@@ -78,7 +78,7 @@ KeyboardHeader {
         Layout.fillHeight: true
         Layout.fillWidth: true
 
-        Layout.preferredHeight: 80
+        Layout.preferredHeight: 75
 
         // Disable animation
         pushEnter: Transition { }

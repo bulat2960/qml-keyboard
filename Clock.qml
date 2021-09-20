@@ -3,13 +3,14 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Extras 1.4
+import QtQuick.Controls.Styles 1.2
 
 CustomDialog {
     id: clock
 
-    readonly property int tumblerColumnWidth: clock.width / 3 - 10
+    readonly property int tumblerColumnWidth: clock.width / 5 - 15
 
-    ColumnLayout {
+    RowLayout {
         Layout.fillHeight: true
         Layout.preferredHeight: 70
 
@@ -41,7 +42,11 @@ CustomDialog {
 
                 width: tumblerColumnWidth
 
-                model: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                model: ["Jan", "Feb", "Mar",
+                        "Apr", "May", "Jun",
+                        "Jul", "Aug", "Sep",
+                        "Oct", "Nov", "Dec"]
+
                 onCurrentIndexChanged: dayColumn.updateModel()
             }
 
@@ -66,6 +71,10 @@ CustomDialog {
                 setCurrentIndexAt(1, 10)
                 setCurrentIndexAt(2, 15)
             }
+
+            style: ClockTumblerStyle {
+                tumblerHeight: parent.height
+            }
         }
 
         Tumbler {
@@ -78,23 +87,24 @@ CustomDialog {
 
             TumblerColumn {
                 id: hourColumn
-
                 width: tumblerColumnWidth
-
                 model: Array.from({length: 24}, (_, i) => (i + 1))
             }
 
             TumblerColumn {
                 id: minuteColumn
-
                 width: tumblerColumnWidth
-
                 model: Array.from({length: 60}, (_, i) => (i + 1))
+            }
+
+            style: ClockTumblerStyle {
+                tumblerHeight: parent.height
             }
         }
     }
 
     RowLayout {
+        Layout.fillHeight: true
         Layout.preferredHeight: 20
 
         LayoutButton {

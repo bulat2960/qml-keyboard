@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.12
 
 KeyboardHeader {
     GridLayout {
-        Layout.preferredHeight: 80
+        Layout.preferredHeight: 75
 
         rows: 4
         columns: 3

@@ -117,7 +117,7 @@ Window {
             }
 
             LayoutButton {
-                text: "Тест\nавтогенератора"
+                text: "Тест\nгенератора"
 
                 onClicked: {
                     stackView.push(symbolsKeyboard)

@@ -7,12 +7,12 @@ CustomDialog {
     property alias controlLabel: controlLabel
 
     RowLayout {
-        Layout.preferredHeight: 10
+        Layout.preferredHeight: 15
 
         Label {
             id: controlLabel
 
-            text: "" // TODO: remember user value
+            text: "" // TODO [Logic]: remember user value
 
             rightPadding: 5
             horizontalAlignment: Text.AlignRight

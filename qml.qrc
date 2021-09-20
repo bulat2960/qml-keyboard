@@ -11,5 +11,6 @@
         <file>LayoutLabel.qml</file>
         <file>Clock.qml</file>
         <file>CustomDialog.qml</file>
+        <file>ClockTumblerStyle.qml</file>
     </qresource>
 </RCC>
