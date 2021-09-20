@@ -9,7 +9,7 @@ RowLayout {
 
     property bool rightLabelTextBold: false
 
-    CustomLayoutLabel {
+    LayoutLabel {
         text: leftLabelText
 
         Layout.preferredWidth: 25
@@ -29,7 +29,7 @@ RowLayout {
         }
     }
 
-    CustomLayoutLabel {
+    LayoutLabel {
         text: rightLabelText
 
         font.bold: rightLabelTextBold

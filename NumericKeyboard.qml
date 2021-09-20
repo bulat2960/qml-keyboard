@@ -16,26 +16,26 @@ KeyboardHeader {
         Repeater {
             model: 9
 
-            delegate: CustomLayoutButton {
+            delegate: LayoutButton {
                 text: modelData
 
-                onClicked: symbolChosen(text)
+                onClicked: controlLabel.text += text
             }
         }
 
-        CustomLayoutButton {
+        LayoutButton {
             text: "Применить"
-            onClicked: cancelled() // TODO: create signal 'accepted'
+            onClicked: accepted()
         }
 
-        CustomLayoutButton {
+        LayoutButton {
             text: "0"
-            onClicked: symbolChosen(text)
+            onClicked: controlLabel.text += text
         }
 
-        CustomLayoutButton {
+        LayoutButton {
             text: "Отмена"
-            onClicked: cancelled()
+            onClicked: rejected()
         }
     }
 }

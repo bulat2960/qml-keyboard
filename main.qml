@@ -15,34 +15,27 @@ Window {
     property Component symbolsKeyboard: SymbolsKeyboard {
         headerLabelText: "Модель АКБ"
 
-        onCancelled: {
-            stackView.pop()
-        }
+        onRejected: stackView.pop()
+        onAccepted: stackView.pop()
     }
 
     property Component numericKeyboard: NumericKeyboard {
         headerLabelText: "Идент. номер батареи"
 
-        onCancelled: {
-            stackView.pop()
-        }
+        onRejected: stackView.pop()
+        onAccepted: stackView.pop()
     }
 
     property Component settings: Settings {
         headerLabelText: "Настройки"
 
-        onCancelled: {
-            stackView.pop()
-        }
-
-        onAccepted: {
-            stackView.pop()
-        }
+        onRejected: stackView.pop()
+        onAccepted: stackView.pop()
     }
 
 
     property Component mainWindow: ColumnLayout {
-        CustomLayoutLabel {
+        LayoutLabel {
             text: "Анализатор \"ЭДА\""
             font.italic: true
             font.bold: true
@@ -115,7 +108,7 @@ Window {
         RowLayout {
             Layout.preferredHeight: parent.height * 2 / 10
 
-            CustomLayoutButton {
+            LayoutButton {
                 text: "Тест\nАКБ"
 
                 onClicked: {
@@ -123,7 +116,7 @@ Window {
                 }
             }
 
-            CustomLayoutButton {
+            LayoutButton {
                 text: "Тест\nавтогенератора"
 
                 onClicked: {
@@ -131,7 +124,7 @@ Window {
                 }
             }
 
-            CustomLayoutButton {
+            LayoutButton {
                 text: "Настройки"
 
                 onClicked: {

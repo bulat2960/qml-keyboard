@@ -18,13 +18,13 @@ KeyboardHeader {
         Repeater {
             model: parent.rows * parent.columns
 
-            delegate: CustomLayoutButton {
+            delegate: LayoutButton {
                 text: dataList[modelData]
 
                 onClicked: {
                     var symbol = (text === "Пробел") ? " " : text
-                    symbolChosen(symbol)
-                    stackView.pop()
+                    controlLabel.text += symbol
+                    keyboardStackView.pop()
                 }
             }
         }
@@ -44,36 +44,36 @@ KeyboardHeader {
                     "4\nGHI",  "5\nJKL",  "6\nMNO",
                     "7\nPQRS", "8\nTUV",  "9\nWXYZ"]
 
-            delegate: CustomLayoutButton {
+            delegate: LayoutButton {
                 text: modelData
                 onClicked: {
                     var symbolsList = text.split('').filter(el => el !== '\n')
-                    stackView.push(childButtonGroup, {dataList: symbolsList})
+                    keyboardStackView.push(childButtonGroup, {dataList: symbolsList})
                 }
             }
         }
 
-        CustomLayoutButton {
+        LayoutButton {
             text: "Применить"
             onClicked: close()
         }
 
-        CustomLayoutButton {
+        LayoutButton {
             text: "0\nПробел"
             onClicked: {
                 var symbolsList = text.split('\n')
-                stackView.push(childButtonGroup, {dataList: symbolsList})
+                keyboardStackView.push(childButtonGroup, {dataList: symbolsList})
             }
         }
 
-        CustomLayoutButton {
+        LayoutButton {
             text: "Отмена"
-            onClicked: cancelled()
+            onClicked: rejected()
         }
     }
 
     StackView {
-        id: stackView
+        id: keyboardStackView
 
         Layout.fillHeight: true
         Layout.fillWidth: true

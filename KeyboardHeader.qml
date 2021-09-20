@@ -3,23 +3,10 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-ColumnLayout {
-    property string headerLabelText
-
-    signal cancelled()
-    signal symbolChosen(string symbol)
-    signal accepted()
-
-    CustomLayoutLabel {
-        text: headerLabelText
-
-        font.bold: true
-
-        Layout.preferredHeight: 10
-    }
+CustomDialog {
+    property alias controlLabel: controlLabel
 
     RowLayout {
-        //Layout.fillHeight: true
         Layout.preferredHeight: 10
 
         Label {
@@ -44,7 +31,7 @@ ColumnLayout {
             }
         }
 
-        CustomLayoutButton {
+        LayoutButton {
             Layout.preferredWidth: 50
 
             background: Rectangle {
@@ -62,9 +49,5 @@ ColumnLayout {
 
             onDoubleClicked: clicked()
         }
-    }
-
-    onSymbolChosen: {
-        controlLabel.text += symbol
     }
 }

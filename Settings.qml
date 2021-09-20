@@ -3,20 +3,14 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-ColumnLayout {
+CustomDialog {
     id: settings
 
-    property string headerLabelText
+    property Component clock: Clock {
+        headerLabelText: "Настройка часов"
 
-    signal cancelled()
-    signal accepted()
-
-    CustomLayoutLabel {
-        text: headerLabelText
-
-        font.bold: true
-
-        Layout.preferredHeight: 10
+        onAccepted: stackView.pop()
+        onRejected: stackView.pop()
     }
 
     GridLayout {
@@ -28,42 +22,43 @@ ColumnLayout {
         columnSpacing: 3
         rowSpacing: 3
 
-        CustomLabeledLayoutButton {
+        LabeledLayoutButton {
             buttonText: "Настройка\nАКБ"
         }
 
-        CustomLabeledLayoutButton {
+        LabeledLayoutButton {
             buttonText: "Тест ГТС"
         }
 
-        CustomLabeledLayoutButton {
+        LabeledLayoutButton {
             buttonText: "Калибровка"
         }
 
-        CustomLabeledLayoutButton {
+        LabeledLayoutButton {
             labelText: "Емкость, Ач"
             buttonText: "1500"
         }
 
-        CustomLabeledLayoutButton {
+        LabeledLayoutButton {
             labelText: "№ АКБ"
             buttonText: "VGB001"
         }
 
-        CustomLabeledLayoutButton {
+        LabeledLayoutButton {
             buttonText: "Настройка\nчасов"
+            buttonClickHandler: () => stackView.push(clock)
         }
     }
 
     RowLayout {
         Layout.preferredHeight: 20
 
-        CustomLayoutButton {
+        LayoutButton {
             text: "Применить"
             onClicked: accepted()
         }
 
-        CustomLayoutButton {
+        LayoutButton {
             text: "App v1.5.1\nCore v0.10.0.0"
 
             enabled: false
@@ -74,9 +69,9 @@ ColumnLayout {
             }
         }
 
-        CustomLayoutButton {
+        LayoutButton {
             text: "Отмена"
-            onClicked: cancelled()
+            onClicked: rejected()
         }
     }
 }

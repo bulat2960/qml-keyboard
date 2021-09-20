@@ -22,7 +22,7 @@ Button {
         verticalAlignment: Qt.AlignVCenter
         horizontalAlignment: Qt.AlignHCenter
         fontSizeMode: Text.Fit
-        font.pixelSize: 100
+        font.pixelSize: 15
     }
 
     onDoubleClicked: clicked()

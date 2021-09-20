@@ -1,13 +1,15 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>CustomLayoutButton.qml</file>
+        <file>LayoutButton.qml</file>
         <file>SymbolsKeyboard.qml</file>
         <file>LabelsRowLayout.qml</file>
         <file>NumericKeyboard.qml</file>
         <file>KeyboardHeader.qml</file>
-        <file>CustomLabeledLayoutButton.qml</file>
+        <file>LabeledLayoutButton.qml</file>
         <file>Settings.qml</file>
-        <file>CustomLayoutLabel.qml</file>
+        <file>LayoutLabel.qml</file>
+        <file>Clock.qml</file>
+        <file>CustomDialog.qml</file>
     </qresource>
 </RCC>

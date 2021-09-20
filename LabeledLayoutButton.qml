@@ -10,24 +10,18 @@ ColumnLayout {
     Layout.preferredWidth: 100
     Layout.preferredHeight: 100
 
-    Label {
+    property var buttonClickHandler
+
+    LayoutLabel {
         text: labelText
 
-        Layout.fillHeight: true
-        Layout.fillWidth: true
-
         Layout.preferredHeight: 20
-
-        fontSizeMode: Text.Fit
-        font.pixelSize: 100
-
-        horizontalAlignment: Qt.AlignHCenter
-        verticalAlignment: Qt.AlignVCenter
     }
 
-    CustomLayoutButton {
+    LayoutButton {
         text: buttonText
 
         Layout.preferredHeight: 80
+        onClicked: buttonClickHandler()
     }
 }
