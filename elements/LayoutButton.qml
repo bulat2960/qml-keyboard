@@ -12,6 +12,7 @@ Button {
 
     background: Rectangle {
         color: text.length !== 0 ? "lightgray" : "transparent"
+        opacity: enabled ? 1 : 0.3
         border.width: text.length !== 0 ? 2 : 0
         border.color: "black"
         radius: parent.height / 5
@@ -19,10 +20,12 @@ Button {
 
     contentItem: Text {
         text: parent.text
+        opacity: enabled ? 1 : 0.3
         verticalAlignment: Qt.AlignVCenter
         horizontalAlignment: Qt.AlignHCenter
         fontSizeMode: Text.Fit
         font.pixelSize: 15
+        wrapMode: Text.WordWrap
     }
 
     onDoubleClicked: clicked()

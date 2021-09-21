@@ -29,6 +29,13 @@ CustomDialog {
         onRejected: stackView.pop()
     }
 
+    property Component calibration: Calibration {
+        headerLabelText: "Калибровка"
+
+        onAccepted: stackView.pop()
+        onRejected: stackView.pop()
+    }
+
     GridLayout {
         Layout.preferredHeight: 70
 
@@ -48,6 +55,7 @@ CustomDialog {
 
         LabeledLayoutButton {
             buttonText: "Калибровка"
+            buttonClickHandler: () => stackView.push(calibration)
         }
 
         LabeledLayoutButton {

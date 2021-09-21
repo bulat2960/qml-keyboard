@@ -12,4 +12,6 @@ Label {
 
     horizontalAlignment: Qt.AlignHCenter
     verticalAlignment: Qt.AlignVCenter
+
+    wrapMode: Text.WordWrap
 }

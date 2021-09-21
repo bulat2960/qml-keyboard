@@ -112,7 +112,7 @@ Window {
             Layout.preferredHeight: parent.height * 2 / 10
 
             LayoutButton {
-                text: "Тест\nАКБ"
+                text: "Тест АКБ"
 
                 onClicked: {
                     stackView.push(numericKeyboard)
@@ -120,7 +120,7 @@ Window {
             }
 
             LayoutButton {
-                text: "Тест\nгенератора"
+                text: "Тест генератора"
 
                 onClicked: {
                     stackView.push(symbolsKeyboard)
