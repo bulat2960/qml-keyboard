@@ -5,6 +5,9 @@ import QtQuick.Layouts 1.12
 import QtQuick.Extras 1.4
 import QtQuick.Controls.Styles 1.2
 
+import '../elements'
+import '../styles'
+
 CustomDialog {
     id: clock
 
@@ -88,13 +91,13 @@ CustomDialog {
             TumblerColumn {
                 id: hourColumn
                 width: tumblerColumnWidth
-                model: Array.from({length: 24}, (_, i) => (i + 1))
+                model: Array.from({length: 24}, (_, i) => i)
             }
 
             TumblerColumn {
                 id: minuteColumn
                 width: tumblerColumnWidth
-                model: Array.from({length: 60}, (_, i) => (i + 1))
+                model: Array.from({length: 60}, (_, i) => i)
             }
 
             style: ClockTumblerStyle {

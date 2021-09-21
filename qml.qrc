@@ -1,16 +1,17 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>LayoutButton.qml</file>
-        <file>SymbolsKeyboard.qml</file>
-        <file>LabelsRowLayout.qml</file>
-        <file>NumericKeyboard.qml</file>
-        <file>KeyboardHeader.qml</file>
-        <file>LabeledLayoutButton.qml</file>
-        <file>Settings.qml</file>
-        <file>LayoutLabel.qml</file>
-        <file>Clock.qml</file>
-        <file>CustomDialog.qml</file>
-        <file>ClockTumblerStyle.qml</file>
+        <file>dialogs/Clock.qml</file>
+        <file>dialogs/CustomDialog.qml</file>
+        <file>dialogs/KeyboardHeader.qml</file>
+        <file>dialogs/NumericKeyboard.qml</file>
+        <file>dialogs/Settings.qml</file>
+        <file>dialogs/SymbolsKeyboard.qml</file>
+        <file>elements/LabeledLayoutButton.qml</file>
+        <file>elements/LabelsRowLayout.qml</file>
+        <file>elements/LayoutButton.qml</file>
+        <file>elements/LayoutLabel.qml</file>
+        <file>styles/ClockTumblerStyle.qml</file>
+        <file>MainWindow.qml</file>
     </qresource>
 </RCC>
