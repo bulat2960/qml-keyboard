@@ -13,6 +13,20 @@ CustomDialog {
         onRejected: stackView.pop()
     }
 
+    property Component akbNumberChanger: SymbolsKeyboard {
+        headerLabelText: "Идент. номер батареи"
+
+        onAccepted: stackView.pop()
+        onRejected: stackView.pop()
+    }
+
+    property Component capacityChanger: NumericKeyboard {
+        headerLabelText: "Ёмкость батареи"
+
+        onAccepted: stackView.pop()
+        onRejected: stackView.pop()
+    }
+
     GridLayout {
         Layout.preferredHeight: 70
 
@@ -37,11 +51,13 @@ CustomDialog {
         LabeledLayoutButton {
             labelText: "Емкость, Ач"
             buttonText: "1500"
+            buttonClickHandler: () => stackView.push(capacityChanger)
         }
 
         LabeledLayoutButton {
             labelText: "№ АКБ"
             buttonText: "VGB001"
+            buttonClickHandler: () => stackView.push(akbNumberChanger)
         }
 
         LabeledLayoutButton {

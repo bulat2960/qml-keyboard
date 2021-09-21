@@ -55,7 +55,7 @@ KeyboardHeader {
 
         LayoutButton {
             text: "Применить"
-            onClicked: close()
+            onClicked: accepted()
         }
 
         LayoutButton {
