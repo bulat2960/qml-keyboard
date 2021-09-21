@@ -9,21 +9,15 @@ import '../elements'
 import '../styles'
 
 CustomDialog {
-    id: clock
-
-    readonly property int tumblerColumnWidth: clock.width / 5 - 15
+    readonly property int tumblerColumnWidth: width / 5 - 15
 
     RowLayout {
-        Layout.fillHeight: true
-        Layout.preferredHeight: 70
-
         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
         Tumbler {
             id: dateTumbler
 
             Layout.fillHeight: true
-            Layout.preferredHeight: 50
 
             readonly property var days: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
@@ -84,7 +78,6 @@ CustomDialog {
             id: timeTumbler
 
             Layout.fillHeight: true
-            Layout.preferredHeight: 50
 
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
@@ -107,11 +100,12 @@ CustomDialog {
     }
 
     RowLayout {
-        Layout.fillHeight: true
-        Layout.preferredHeight: 20
+        Layout.fillHeight: false
+        Layout.preferredHeight: parent.height * 0.2
 
         LayoutButton {
             text: "Применить"
+
             onClicked: accepted()
         }
 
@@ -121,6 +115,7 @@ CustomDialog {
 
         LayoutButton {
             text: "Отмена"
+
             onClicked: rejected()
         }
     }

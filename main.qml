@@ -11,6 +11,7 @@ Window {
 
     width: 320
     height: 240
+
     visible: true
 
     title: qsTr("QML Raspberry Pi EDA Analyzer")
@@ -43,28 +44,23 @@ Window {
             font.italic: true
             font.bold: true
 
-            Layout.preferredHeight: parent.height / 10
+            Layout.fillHeight: false
+            Layout.preferredHeight: parent.height * 0.1
         }
 
         LabelsRowLayout {
-            Layout.preferredHeight: parent.height / 10
-
             leftLabelText: "Бустер"
 
             rightLabelText: "Factory"
         }
 
         LabelsRowLayout {
-            Layout.preferredHeight: parent.height / 10
-
             leftLabelText: "13.09.2021"
 
             rightLabelText: "19:23"
         }
 
         LabelsRowLayout {
-            Layout.preferredHeight: parent.height / 10
-
             leftLabelText: "Состояние:"
 
             rightLabelText: "Подготовка"
@@ -73,8 +69,6 @@ Window {
         }
 
         LabelsRowLayout {
-            Layout.preferredHeight: parent.height / 10
-
             leftLabelText: "Напряжение:"
 
             rightLabelText: "12.24"
@@ -82,8 +76,6 @@ Window {
         }
 
         LabelsRowLayout {
-            Layout.preferredHeight: parent.height / 10
-
             leftLabelText: "Температура:"
 
             rightLabelText: "24.3"
@@ -91,8 +83,6 @@ Window {
         }
 
         LabelsRowLayout {
-            Layout.preferredHeight: parent.height / 10
-
             leftLabelText: "Тип АКБ:"
 
             rightLabelText: "6CT190"
@@ -100,8 +90,6 @@ Window {
         }
 
         LabelsRowLayout {
-            Layout.preferredHeight: parent.height / 10
-
             leftLabelText: "Номер батареи:"
 
             rightLabelText: "114232"
@@ -109,7 +97,10 @@ Window {
         }
 
         RowLayout {
-            Layout.preferredHeight: parent.height * 2 / 10
+            Layout.alignment: Qt.AlignBottom
+
+            Layout.fillHeight: false
+            Layout.preferredHeight: parent.height * 0.2
 
             LayoutButton {
                 text: "Тест АКБ"
@@ -148,10 +139,34 @@ Window {
         anchors.bottomMargin: 5
 
         // Disable animation
-        pushEnter: Transition { }
-        pushExit: Transition { }
-        popEnter: Transition { }
-        popExit: Transition { }
+        pushEnter: Transition {
+            OpacityAnimator {
+                from: 0
+                to: 1
+                duration: 200
+            }
+        }
+        pushExit: Transition {
+            OpacityAnimator {
+                from: 1
+                to: 0
+                duration: 200
+            }
+        }
+        popEnter: Transition {
+            OpacityAnimator {
+                from: 0
+                to: 1
+                duration: 200
+            }
+        }
+        popExit: Transition {
+            OpacityAnimator {
+                from: 1
+                to: 0
+                duration: 200
+            }
+        }
 
         initialItem: mainWindow
     }

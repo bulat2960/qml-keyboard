@@ -13,9 +13,9 @@ ColumnLayout {
 
     LayoutLabel {
         text: headerLabelText
-
         font.bold: true
 
-        Layout.preferredHeight: 10
+        Layout.fillHeight: false
+        Layout.preferredHeight: parent.height * 0.1
     }
 }

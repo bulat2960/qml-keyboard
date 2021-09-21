@@ -12,7 +12,7 @@
         <file>elements/LayoutButton.qml</file>
         <file>elements/LayoutLabel.qml</file>
         <file>styles/ClockTumblerStyle.qml</file>
-        <file>MainWindow.qml</file>
         <file>dialogs/Calibration.qml</file>
+        <file>elements/CustomGridLayout.qml</file>
     </qresource>
 </RCC>

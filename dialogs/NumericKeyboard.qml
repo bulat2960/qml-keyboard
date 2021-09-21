@@ -6,15 +6,7 @@ import QtQuick.Layouts 1.12
 import '../elements'
 
 KeyboardHeader {
-    GridLayout {
-        Layout.preferredHeight: 75
-
-        rows: 4
-        columns: 3
-
-        columnSpacing: 3
-        rowSpacing: 3
-
+    CustomGridLayout {
         Repeater {
             model: 9
 
@@ -27,16 +19,19 @@ KeyboardHeader {
 
         LayoutButton {
             text: "Применить"
+
             onClicked: accepted()
         }
 
         LayoutButton {
             text: "0"
+
             onClicked: controlLabel.text += text
         }
 
         LayoutButton {
             text: "Отмена"
+
             onClicked: rejected()
         }
     }

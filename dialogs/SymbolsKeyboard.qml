@@ -6,22 +6,18 @@ import QtQuick.Layouts 1.12
 import '../elements'
 
 KeyboardHeader {
-    property Component childButtonGroup: GridLayout {
+    property Component childButtonGroup: CustomGridLayout {
         id: symbolChooseLayout
 
         property var dataList: []
-
-        rows: 4
-        columns: 3
-
-        columnSpacing: 3
-        rowSpacing: 3
 
         Repeater {
             model: parent.rows * parent.columns
 
             delegate: LayoutButton {
                 text: dataList[modelData]
+
+                enabled: text.length > 0
 
                 onClicked: {
                     var symbol = (text === "Пробел") ? " " : text
@@ -32,14 +28,8 @@ KeyboardHeader {
         }
     }
 
-    property Component mainButtonGroup : GridLayout {
+    property Component mainButtonGroup : CustomGridLayout {
         id: symbolGroupChooseLayout
-
-        rows: 4
-        columns: 3
-
-        columnSpacing: 3
-        rowSpacing: 3
 
         Repeater {
             model: ["1\n-.",   "2\nABC",  "3\nDEF",
@@ -48,6 +38,7 @@ KeyboardHeader {
 
             delegate: LayoutButton {
                 text: modelData
+
                 onClicked: {
                     var symbolsList = text.split('').filter(el => el !== '\n')
                     keyboardStackView.push(childButtonGroup, {dataList: symbolsList})
@@ -57,11 +48,13 @@ KeyboardHeader {
 
         LayoutButton {
             text: "Применить"
+
             onClicked: accepted()
         }
 
         LayoutButton {
             text: "0\nПробел"
+
             onClicked: {
                 var symbolsList = text.split('\n')
                 keyboardStackView.push(childButtonGroup, {dataList: symbolsList})
@@ -70,6 +63,7 @@ KeyboardHeader {
 
         LayoutButton {
             text: "Отмена"
+
             onClicked: rejected()
         }
     }
@@ -79,8 +73,6 @@ KeyboardHeader {
 
         Layout.fillHeight: true
         Layout.fillWidth: true
-
-        Layout.preferredHeight: 75
 
         // Disable animation
         pushEnter: Transition { }

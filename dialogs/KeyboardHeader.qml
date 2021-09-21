@@ -9,23 +9,19 @@ CustomDialog {
     property alias controlLabel: controlLabel
 
     RowLayout {
-        Layout.preferredHeight: 15
+        Layout.fillHeight: false
+        Layout.preferredHeight: parent.height * 0.15
 
-        Label {
+        LayoutLabel {
             id: controlLabel
 
             text: "" // TODO [Logic]: remember user value
 
+            Layout.fillWidth: false
+            Layout.preferredWidth: parent.width * 0.8
+
             rightPadding: 5
             horizontalAlignment: Text.AlignRight
-
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-
-            Layout.preferredWidth: 200
-
-            font.pixelSize: 500
-            fontSizeMode: Text.VerticalFit
 
             background: Rectangle {
                 color: "lightgrey"
@@ -34,7 +30,7 @@ CustomDialog {
         }
 
         LayoutButton {
-            Layout.preferredWidth: 50
+            text: "<---"
 
             background: Rectangle {
                 color: "lightgray"
@@ -42,8 +38,6 @@ CustomDialog {
                 border.color: "black"
                 radius: parent.height / 5
             }
-
-            text: "<---"
 
             onClicked: {
                 controlLabel.text = controlLabel.text.slice(0, controlLabel.text.length - 1)

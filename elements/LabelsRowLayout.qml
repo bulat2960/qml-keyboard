@@ -9,10 +9,20 @@ RowLayout {
 
     property bool rightLabelTextBold: false
 
+    Layout.fillHeight: true
+    Layout.fillWidth: true
+
+    Layout.preferredHeight: 100
+    Layout.preferredWidth: 100
+
     LayoutLabel {
         text: leftLabelText
 
-        Layout.preferredWidth: 25
+        Layout.fillWidth: false
+        Layout.preferredWidth: parent.width * 0.4
+
+        font.pixelSize: 100
+        fontSizeMode: Text.Fit
 
         horizontalAlignment: Qt.AlignLeft
     }
@@ -20,8 +30,6 @@ RowLayout {
     Item {
         Layout.fillHeight: true
         Layout.fillWidth: true
-
-        Layout.preferredWidth: 50
 
         Rectangle {
             anchors.fill: parent;
@@ -34,7 +42,11 @@ RowLayout {
 
         font.bold: rightLabelTextBold
 
-        Layout.preferredWidth: 25
+        Layout.fillWidth: false
+        Layout.preferredWidth: parent.width * 0.4
+
+        font.pixelSize: 100
+        fontSizeMode: Text.Fit
 
         horizontalAlignment: Qt.AlignRight
     }

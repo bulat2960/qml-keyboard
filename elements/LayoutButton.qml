@@ -24,7 +24,7 @@ Button {
         verticalAlignment: Qt.AlignVCenter
         horizontalAlignment: Qt.AlignHCenter
         fontSizeMode: Text.Fit
-        font.pixelSize: 15
+        font.pixelSize: 20
         wrapMode: Text.WordWrap
     }
 

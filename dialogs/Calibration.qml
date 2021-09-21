@@ -13,14 +13,13 @@ CustomDialog {
 
     property Component calibrationTypeChooser: ColumnLayout {
         LayoutLabel {
-            Layout.preferredHeight: 20
-
             text: "Выберите тип калибровки"
+
+            Layout.fillHeight: false
+            Layout.preferredHeight: parent.height * 0.2
         }
 
         LayoutButton {
-            Layout.preferredHeight: 40
-
             text: "Калибровка вольтметра"
 
             onClicked: {
@@ -31,8 +30,6 @@ CustomDialog {
         }
 
         LayoutButton {
-            Layout.preferredHeight: 40
-
             text: "Калибровка термодатчика"
 
             onClicked: {
@@ -47,8 +44,6 @@ CustomDialog {
         LayoutLabel {
             id: informationLabel
 
-            Layout.preferredHeight: 35
-
             text: "Внимание! Коэффициенты калибровки будут установлены в (1; 0)."
 
             horizontalAlignment: Qt.AlignLeft
@@ -57,8 +52,6 @@ CustomDialog {
         LayoutLabel {
             id: parametersLabel
 
-            Layout.preferredHeight: 35
-
             text: "Текущие коэффициенты:\na=1; b=0."
 
             horizontalAlignment: Qt.AlignLeft
@@ -66,13 +59,15 @@ CustomDialog {
         }
 
         LayoutButton {
-            Layout.preferredHeight: 30
+            text: "Продолжить"
+
+            Layout.fillHeight: false
+            Layout.preferredHeight: parent.height * 0.3
 
             Layout.fillWidth: false
-            Layout.alignment: Qt.AlignHCenter
             Layout.preferredWidth: parent.width * 0.8
 
-            text: "Продолжить"
+            Layout.alignment: Qt.AlignHCenter
 
             onClicked: {
                 text = ""
@@ -97,8 +92,6 @@ CustomDialog {
         Layout.fillHeight: true
         Layout.fillWidth: true
 
-        Layout.preferredHeight: 70
-
         // Disable animation
         pushEnter: Transition { }
         pushExit: Transition { }
@@ -110,7 +103,8 @@ CustomDialog {
 
 
     RowLayout {
-        Layout.preferredHeight: 20
+        Layout.fillHeight: false
+        Layout.preferredHeight: parent.height * 0.2
 
         LayoutButton {
             id: continueButton
@@ -124,8 +118,6 @@ CustomDialog {
         }
 
         LayoutButton {
-            id: closeButton
-
             text: "Назад"
             onClicked: rejected()
         }

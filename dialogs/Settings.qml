@@ -36,14 +36,8 @@ CustomDialog {
         onRejected: stackView.pop()
     }
 
-    GridLayout {
-        Layout.preferredHeight: 70
-
+    CustomGridLayout {
         rows: 2
-        columns: 3
-
-        columnSpacing: 3
-        rowSpacing: 3
 
         LabeledLayoutButton {
             buttonText: "Настройка\nАКБ"
@@ -55,32 +49,38 @@ CustomDialog {
 
         LabeledLayoutButton {
             buttonText: "Калибровка"
+
             buttonClickHandler: () => stackView.push(calibration)
         }
 
         LabeledLayoutButton {
             labelText: "Емкость, Ач"
             buttonText: "1500"
+
             buttonClickHandler: () => stackView.push(capacityChanger)
         }
 
         LabeledLayoutButton {
             labelText: "№ АКБ"
             buttonText: "VGB001"
+
             buttonClickHandler: () => stackView.push(akbNumberChanger)
         }
 
         LabeledLayoutButton {
             buttonText: "Настройка\nчасов"
+
             buttonClickHandler: () => stackView.push(clock)
         }
     }
 
     RowLayout {
-        Layout.preferredHeight: 20
+        Layout.fillHeight: false
+        Layout.preferredHeight: parent.height * 0.2
 
         LayoutButton {
             text: "Применить"
+
             onClicked: accepted()
         }
 
@@ -97,6 +97,7 @@ CustomDialog {
 
         LayoutButton {
             text: "Отмена"
+
             onClicked: rejected()
         }
     }
