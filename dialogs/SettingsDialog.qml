@@ -8,29 +8,45 @@ import '../elements'
 CustomDialog {
     id: settings
 
-    property Component clock: Clock {
+    property Component clockDialog: ClockDialog {
         headerLabelText: "Настройка часов"
 
         onAccepted: stackView.pop()
         onRejected: stackView.pop()
     }
 
-    property Component akbNumberChanger: SymbolsKeyboard {
+    property Component akbNumberChangerDialog: SymbolsKeyboard {
+        id: akbNumberChanger
+
         headerLabelText: "Идент. номер батареи"
 
         onAccepted: stackView.pop()
         onRejected: stackView.pop()
     }
 
-    property Component capacityChanger: NumericKeyboard {
+    property Component capacityChangerDialog: NumericKeyboard {
         headerLabelText: "Ёмкость батареи"
 
         onAccepted: stackView.pop()
         onRejected: stackView.pop()
     }
 
-    property Component calibration: Calibration {
+    property Component calibrationDialog: CalibrationDialog {
         headerLabelText: "Калибровка"
+
+        onAccepted: stackView.pop()
+        onRejected: stackView.pop()
+    }
+
+    property Component testSignalGeneratorDialog: TestSignalGeneratorDialog {
+        headerLabelText: "Тест ГТС"
+
+        onAccepted: stackView.pop()
+        onRejected: stackView.pop()
+    }
+
+    property Component akbSettingsDialog: AkbSettingsDialog {
+        headerLabelText: "Настройка АКБ"
 
         onAccepted: stackView.pop()
         onRejected: stackView.pop()
@@ -39,38 +55,42 @@ CustomDialog {
     CustomGridLayout {
         rows: 2
 
-        LabeledLayoutButton {
+        LabeledButtonLayout {
             buttonText: "Настройка\nАКБ"
+
+            buttonClickHandler: () => stackView.push(akbSettingsDialog)
         }
 
-        LabeledLayoutButton {
+        LabeledButtonLayout {
             buttonText: "Тест ГТС"
+
+            buttonClickHandler: () => stackView.push(testSignalGeneratorDialog)
         }
 
-        LabeledLayoutButton {
+        LabeledButtonLayout {
             buttonText: "Калибровка"
 
-            buttonClickHandler: () => stackView.push(calibration)
+            buttonClickHandler: () => stackView.push(calibrationDialog)
         }
 
-        LabeledLayoutButton {
+        LabeledButtonLayout {
             labelText: "Емкость, Ач"
             buttonText: "1500"
 
-            buttonClickHandler: () => stackView.push(capacityChanger)
+            buttonClickHandler: () => stackView.push(capacityChangerDialog)
         }
 
-        LabeledLayoutButton {
+        LabeledButtonLayout {
             labelText: "№ АКБ"
             buttonText: "VGB001"
 
-            buttonClickHandler: () => stackView.push(akbNumberChanger)
+            buttonClickHandler: () => stackView.push(akbNumberChangerDialog)
         }
 
-        LabeledLayoutButton {
+        LabeledButtonLayout {
             buttonText: "Настройка\nчасов"
 
-            buttonClickHandler: () => stackView.push(clock)
+            buttonClickHandler: () => stackView.push(clockDialog)
         }
     }
 

@@ -5,7 +5,9 @@ import QtQuick.Layouts 1.12
 
 import '../elements'
 
-KeyboardHeader {
+CustomDialog {
+    property string labelData
+
     property Component childButtonGroup: CustomGridLayout {
         id: symbolChooseLayout
 
@@ -21,7 +23,7 @@ KeyboardHeader {
 
                 onClicked: {
                     var symbol = (text === "Пробел") ? " " : text
-                    controlLabel.text += symbol
+                    textLine.addSymbol(symbol)
                     keyboardStackView.pop()
                 }
             }
@@ -66,6 +68,15 @@ KeyboardHeader {
 
             onClicked: rejected()
         }
+    }
+
+    TextLine {
+        id: textLine
+
+        labelData: parent.labelData
+
+        Layout.fillHeight: false // Prevent to be resized by layout
+        Layout.preferredHeight: parent.height * 0.14 // Set fixed height - 14% of parent height
     }
 
     StackView {

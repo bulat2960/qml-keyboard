@@ -1,18 +1,28 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>dialogs/Clock.qml</file>
+        <file>dialogs/CalibrationDialog.qml</file>
+        <file>dialogs/ClockDialog.qml</file>
         <file>dialogs/CustomDialog.qml</file>
-        <file>dialogs/KeyboardHeader.qml</file>
         <file>dialogs/NumericKeyboard.qml</file>
-        <file>dialogs/Settings.qml</file>
+        <file>dialogs/SettingsDialog.qml</file>
         <file>dialogs/SymbolsKeyboard.qml</file>
-        <file>elements/LabeledLayoutButton.qml</file>
+        <file>dialogs/TestSignalGeneratorDialog.qml</file>
+        <file>elements/CustomGridLayout.qml</file>
+        <file>elements/CustomListView.qml</file>
+        <file>elements/DatetimeLayout.qml</file>
+        <file>elements/ItemSelectorLayout.qml</file>
+        <file>elements/LabeledButtonLayout.qml</file>
+        <file>elements/LabelsColumnLayout.qml</file>
         <file>elements/LabelsRowLayout.qml</file>
         <file>elements/LayoutButton.qml</file>
         <file>elements/LayoutLabel.qml</file>
-        <file>styles/ClockTumblerStyle.qml</file>
-        <file>dialogs/Calibration.qml</file>
-        <file>elements/CustomGridLayout.qml</file>
+        <file>elements/Spacer.qml</file>
+        <file>elements/TextLine.qml</file>
+        <file>main.qml</file>
+        <file>qml.qrc</file>
+        <file>resources.qrc</file>
+        <file>elements/VerticalSeparator.qml</file>
+        <file>dialogs/AkbSettingsDialog.qml</file>
+        <file>dialogs/BriefResultDialog.qml</file>
     </qresource>
 </RCC>

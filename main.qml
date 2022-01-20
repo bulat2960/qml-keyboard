@@ -30,8 +30,15 @@ Window {
         onAccepted: stackView.pop()
     }
 
-    property Component settings: Settings {
+    property Component settingsDialog: SettingsDialog {
         headerLabelText: "Настройки"
+
+        onRejected: stackView.pop()
+        onAccepted: stackView.pop()
+    }
+
+    property Component briefResultDialog: BriefResultDialog {
+        headerLabelText: "Результаты тестирования"
 
         onRejected: stackView.pop()
         onAccepted: stackView.pop()
@@ -48,16 +55,26 @@ Window {
             Layout.preferredHeight: parent.height * 0.1
         }
 
-        LabelsRowLayout {
-            leftLabelText: "Бустер"
+        RowLayout {
+            property int fontSize: 20
 
-            rightLabelText: "Factory"
-        }
+            LabelsColumnLayout {
+                topLabelText: "Бустер"
+                bottomLabelText: "Factory"
 
-        LabelsRowLayout {
-            leftLabelText: "13.09.2021"
+                fontSize: parent.fontSize
 
-            rightLabelText: "19:23"
+                alignment: Qt.AlignLeft
+            }
+
+            Spacer { }
+
+            DatetimeLayout {
+                dateText: "13.09.2021"
+                timeText: "19:23"
+
+                fontSize: parent.fontSize
+            }
         }
 
         LabelsRowLayout {
@@ -106,23 +123,22 @@ Window {
                 text: "Тест АКБ"
 
                 onClicked: {
-                    stackView.push(numericKeyboard)
+                    stackView.push(briefResultDialog)
                 }
             }
 
             LayoutButton {
-                text: "Тест генератора"
+                text: "Следующий номер АКБ"
 
-                onClicked: {
-                    stackView.push(symbolsKeyboard)
-                }
+                // TODO: Increment AKB number or delegate it to C++ code
+                onClicked: { }
             }
 
             LayoutButton {
                 text: "Настройки"
 
                 onClicked: {
-                    stackView.push(settings)
+                    stackView.push(settingsDialog)
                 }
             }
         }
@@ -139,7 +155,13 @@ Window {
         anchors.bottomMargin: 5
 
         // Disable animation
-        pushEnter: Transition {
+        pushEnter: Transition { }
+        pushExit: Transition { }
+        popEnter: Transition { }
+        popExit: Transition { }
+
+        // Enable animation
+        /*pushEnter: Transition {
             OpacityAnimator {
                 from: 0
                 to: 1
@@ -166,7 +188,7 @@ Window {
                 to: 0
                 duration: 200
             }
-        }
+        }*/
 
         initialItem: mainWindow
     }

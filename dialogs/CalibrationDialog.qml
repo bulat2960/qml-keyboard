@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Extras 1.4
 
 import '../elements'
 
@@ -44,6 +43,7 @@ CustomDialog {
         LayoutLabel {
             id: informationLabel
 
+            // TODO: load correct coefficients from C++
             text: "Внимание! Коэффициенты калибровки будут установлены в (1; 0)."
 
             horizontalAlignment: Qt.AlignLeft
@@ -52,6 +52,7 @@ CustomDialog {
         LayoutLabel {
             id: parametersLabel
 
+            // TODO: set correct coefficients from C++
             text: "Текущие коэффициенты:\na=1; b=0."
 
             horizontalAlignment: Qt.AlignLeft
@@ -72,6 +73,7 @@ CustomDialog {
             onClicked: {
                 text = ""
 
+                // TODO: set next step from C++
                 if (calibrationDialog.type == "Thermo") {
                     informationLabel.text = "Установите температуру 30 С"
                 } else {
@@ -109,8 +111,7 @@ CustomDialog {
         LayoutButton {
             id: continueButton
 
-            text: ""
-            onClicked: accepted()
+            text: undefined
         }
 
         LayoutButton {

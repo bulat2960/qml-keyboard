@@ -5,7 +5,14 @@ import QtQuick.Layouts 1.12
 
 import '../elements'
 
-KeyboardHeader {
+CustomDialog {
+    TextLine {
+        id: textLine
+
+        Layout.fillHeight: false // Prevent to be resized by layout
+        Layout.preferredHeight: parent.height * 0.14 // Set fixed height - 14% of parent height
+    }
+
     CustomGridLayout {
         Repeater {
             model: 9
@@ -13,7 +20,7 @@ KeyboardHeader {
             delegate: LayoutButton {
                 text: modelData
 
-                onClicked: controlLabel.text += text
+                onClicked: textLine.addSymbol(text)
             }
         }
 
@@ -26,7 +33,7 @@ KeyboardHeader {
         LayoutButton {
             text: "0"
 
-            onClicked: controlLabel.text += text
+            onClicked: textLine.controlLabel.text += text
         }
 
         LayoutButton {
