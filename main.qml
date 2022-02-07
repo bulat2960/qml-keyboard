@@ -56,7 +56,7 @@ Window {
         }
 
         RowLayout {
-            property int fontSize: 20
+            readonly property int fontSize: 20
 
             LabelsColumnLayout {
                 topLabelText: "Бустер"

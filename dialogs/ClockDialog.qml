@@ -24,8 +24,6 @@ CustomDialog {
                     setIndex(Math.min(previousIndex, newIndex - 1))
                     var newModel = Array.from({length: newIndex}, (_, i) => (i + 1))
                     setModel(newModel)
-
-
                 }
             }
 
